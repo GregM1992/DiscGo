@@ -20,3 +20,10 @@ a {
 body {
   background-color: #88effd;
 }
+
+#faveicon{
+  width: 25px;
+}
+#emptyheart{
+  width: 25px;
+}
