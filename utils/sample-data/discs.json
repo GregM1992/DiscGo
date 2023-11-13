@@ -1,0 +1,38 @@
+{
+  "-MiBsknNSQ6aBG1-2lQS": {
+    "firebaseKey": "-MiBsknNSQ6aBG1-2lQS",
+    "bagId": "-MiBsfuTafbEQ7eAULxV",
+    "discId": "60cafc71-fc5e-5574-a127-4143bcd7bf00",
+    "longestThrow": "350ft",
+    "aces": 2,
+    "birdies": 8,
+    "favorite": true
+  },
+  "-MiBuCve4-r_H-RLUOh2": {
+    "firebaseKey": "-MiBuCve4-r_H-RLUOh2",
+    "bagId": "-MiBsfuTafbEQ7eAULxV",
+    "discId": "47a1303c-8c01-58b6-8047-7fbef157ad08",
+    "longestThrow": "300ft",
+    "aces": 1,
+    "birdies": 5,
+    "favorite": false
+  },
+  "-MiBuU13EaKmGOMjJF-X": {
+    "firebaseKey": "-MiBuU13EaKmGOMjJF-X",
+    "bagId": "-MiBsfuTafbEQ7eAULxV",
+    "discId":  "3603bf2d-33e6-52cd-84b9-e060055c36c8",
+    "longestThrow": "400ft",
+    "aces": 3,
+    "birdies": 10,
+    "favorite": true
+  },
+  "-MiBvW8ME_DvO2GzwQ8D": {
+    "firebaseKey": "-MiBvW8ME_DvO2GzwQ8D",
+    "bagId": "-MiBt86VzkC-EGmJnxjm",
+    "discId": "fe15ed35-0047-58a1-908e-84e1b55406e1",
+    "longestThrow": "320ft",
+    "aces": 2,
+    "birdies": 6,
+    "favorite": false
+  }
+}
