@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DiscCard from '../../components/DiscCard';
-import getAllDiscs from '../../api/discData';
+import { getAllDiscs } from '../../api/extDiscData';
 
 function ShowAllDiscs() {
   const [discs, setDiscs] = useState([]);
@@ -14,7 +14,7 @@ function ShowAllDiscs() {
   }, []);
 
   return (
-    <div className="text-center my-4">
+    <div className="text-center my-4" id="discContainer">
       {discs.map((disc) => (
         <DiscCard key={disc.id} discObj={disc} onUpdate={getAllTheDiscs} />
       ))}

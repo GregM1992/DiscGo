@@ -30,7 +30,7 @@ export default function BagCard({ bagObj, onUpdate }) {
           ) : <img id="faveicon" src={emptyheart.src} alt="heart icon" /> }{' '}
           {bagObj.favorite}
         </p>
-        <Link href="/" passHref>
+        <Link href={`/myBag/${bagObj.firebaseKey}`} passHref>
           <Button variant="info">VIEW</Button>
         </Link>
         <Button variant="primary" onClick={deleteThisBag}>

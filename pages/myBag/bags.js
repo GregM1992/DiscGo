@@ -14,6 +14,7 @@ function ShowBags() {
     getBags(user.uid).then(setBags);
   };
 
+  console.warn(bags);
   useEffect(() => {
     getAllBags();
   }, []);

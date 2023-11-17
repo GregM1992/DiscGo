@@ -58,6 +58,24 @@ const updateBag = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleBag = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bags.json?orderBy="firebaseKey"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 export {
-  getBags, deleteBag, createBag, updateBag,
+  getBags, deleteBag, createBag, updateBag, getSingleBag,
 };
