@@ -21,8 +21,6 @@ export default function DiscStatForm({ statObj }) {
     if (statObj.firebaseKey) setFormInput(statObj);
   }, [statObj]);
 
-  console.warn(formInput);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     const shotValue = (name === 'aces' || name === 'birdies') ? parseInt(value, 10) : value;

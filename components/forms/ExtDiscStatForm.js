@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createBaggedDisc, updateBaggedDisc } from '../../api/discData';
-import { getDiscDetails } from '../../api/extDiscData';
 import { getBags } from '../../api/bagData';
 
 export default function ExtDiscStatForm({ extDiscObj }) {
@@ -14,14 +13,11 @@ export default function ExtDiscStatForm({ extDiscObj }) {
   const [bags, setBags] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  const { id } = router.query;
 
   useEffect(() => {
-    getDiscDetails(id)?.then(setFormInput);
+    if (extDiscObj.id)setFormInput(extDiscObj);
     getBags(user.uid).then(setBags);
   }, []);
-
-  console.warn(formInput);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

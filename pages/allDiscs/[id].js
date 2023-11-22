@@ -21,13 +21,13 @@ export default function ViewBagsDiscs() {
   return (
 
     <div>
-      {discDetails.map((extDiscObj) => (
-        <ExtDiscStatForm
-          key={extDiscObj.id}
-          extDiscObj={extDiscObj}
-          onUpdate={showDiscDetails}
-        />
-      ))}
+
+      <ExtDiscStatForm
+        key={discDetails.id}
+        extDiscObj={discDetails}
+        onUpdate={showDiscDetails}
+      />
+
     </div>
   );
 }

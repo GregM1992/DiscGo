@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const extEndpoint = clientCredentials.extDatabaseURL;
 
 const getDiscDetails = (id) => new Promise((resolve, reject) => {
-  fetch(`${extEndpoint}/disc/${id}.json`, {
+  fetch(`${extEndpoint}/disc/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
