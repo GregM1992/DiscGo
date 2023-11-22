@@ -19,7 +19,6 @@ export default function DiscStatForm({ statObj }) {
 
   useEffect(() => {
     if (statObj.firebaseKey) setFormInput(statObj);
-    console.warn(formInput);
   }, [statObj]);
 
   const handleChange = (e) => {
@@ -101,7 +100,7 @@ DiscStatForm.propTypes = {
     bagId: PropTypes.string,
     firebaseKey: PropTypes.string,
     pic: PropTypes.string,
-    favorite: PropTypes.string,
+    favorite: PropTypes.bool,
   }),
 };
 
