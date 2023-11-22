@@ -43,7 +43,7 @@ function ShowAllDiscs() {
       <div className="text-center my-4" id="discContainer">
 
         {discs.map((disc) => (
-          <Button className="discButton" onClick={() => handleClick(disc.id)}>
+          <Button className="discButton" key={disc.id} onClick={() => handleClick(disc.id)}>
             <DiscCard key={disc.id} discObj={disc} onUpdate={getAllTheDiscs} />
           </Button>
         ))}

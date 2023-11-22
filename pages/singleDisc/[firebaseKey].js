@@ -4,7 +4,7 @@ import DiscStatForm from '../../components/forms/DiscStatForm';
 import { getSingleBaggedDisc } from '../../api/discData';
 
 export default function ViewBaggedDiscsStats() {
-  const [baggedDiscsStats, setBaggedDiscsStats] = useState([]);
+  const [baggedDiscsStats, setBaggedDiscsStats] = useState({});
 
   const router = useRouter();
 
@@ -21,13 +21,12 @@ export default function ViewBaggedDiscsStats() {
   return (
 
     <div>
-      {baggedDiscsStats.map((statObj) => (
-        <DiscStatForm
-          key={statObj.firebaseKey}
-          statObj={statObj}
-          onUpdate={getBagsDiscStats}
-        />
-      ))}
+      <DiscStatForm
+        key={baggedDiscsStats.firebaseKey}
+        statObj={baggedDiscsStats}
+        onUpdate={getBagsDiscStats}
+      />
+
     </div>
 
   );

@@ -9,7 +9,7 @@ import { createBaggedDisc, updateBaggedDisc } from '../../api/discData';
 import { getBags } from '../../api/bagData';
 
 export default function ExtDiscStatForm({ extDiscObj }) {
-  const [formInput, setFormInput] = useState([]);
+  const [formInput, setFormInput] = useState({});
   const [bags, setBags] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
@@ -84,8 +84,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
         <Form.Control
           type="text"
           placeholder={formInput.fade}
-          name="speed"
-          value={formInput.speed}
+          name="fade"
+          value={formInput.fade}
           onChange={handleChange}
         />
         <Form.Check

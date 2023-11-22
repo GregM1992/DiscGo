@@ -4,7 +4,7 @@ import { getDiscDetails } from '../../api/extDiscData';
 import ExtDiscStatForm from '../../components/forms/ExtDiscStatForm';
 
 export default function ViewBagsDiscs() {
-  const [discDetails, setDiscDetails] = useState([]);
+  const [discDetails, setDiscDetails] = useState({});
 
   const router = useRouter();
 
@@ -25,7 +25,6 @@ export default function ViewBagsDiscs() {
       <ExtDiscStatForm
         key={discDetails.id}
         extDiscObj={discDetails}
-        onUpdate={showDiscDetails}
       />
 
     </div>

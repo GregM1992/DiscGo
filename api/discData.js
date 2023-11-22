@@ -33,20 +33,14 @@ const deleteBaggedDisc = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const getSingleBaggedDisc = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/baggedDiscs.json?orderBy="firebaseKey"&equalTo="${firebaseKey}"`, {
+  fetch(`${endpoint}/baggedDiscs/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    })
+    .then((data) => resolve(data))
     .catch(reject);
 });
 
