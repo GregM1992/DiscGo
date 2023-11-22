@@ -31,7 +31,7 @@ body {
 #discContainer{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-;
   margin: auto;
 
 }
@@ -42,7 +42,12 @@ body {
   border-radius: 50%;
   font-weight: 500;
   text-align: center;
-  margin: 20px 5px 0 5px;
   padding-top: 35px;
   
+}
+
+.discButton{
+  background: transparent;
+  border: none;
+  border-radius: 75%;
 }

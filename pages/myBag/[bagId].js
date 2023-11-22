@@ -17,7 +17,7 @@ export default function ViewBagsDiscs() {
   useEffect(() => {
     getBagsDiscs();
   }, [bagId]);
-
+  console.warn(baggedDiscs);
   return (
     <div>
       {baggedDiscs?.map((disc) => (
