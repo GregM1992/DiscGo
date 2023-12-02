@@ -119,8 +119,8 @@ const searchDiscsByName = (searchValue) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
-const searchDiscsByBrand = (searchValue, brand) => new Promise((resolve, reject) => {
-  getDiscsByBrand(brand).then((discArray) => {
+const searchDiscsByBrand = (searchValue) => new Promise((resolve, reject) => {
+  getAllDiscs().then((discArray) => {
     const searchResults = discArray.filter((disc) => (
       disc.brand.toLowerCase().includes(searchValue)
     ));
