@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
@@ -19,11 +20,12 @@ function ShowBags() {
   }, []);
 
   return (
-    <div className="text-center my-4">
+    <div className="text-center my-4 bagPage">
+      <h2>{user.displayName}'s Bags</h2>
       <Link href="/myBag/new" passHref>
-        <Button>Add Bag</Button>
+        <Button variant="outline-secondary" className="addBagBtn">Add Bag</Button>
       </Link>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap bagContainer">
         {bags.map((bag) => (
           <BagCard key={bag.firebaseKey} bagObj={bag} onUpdate={getAllBags} />
         ))}

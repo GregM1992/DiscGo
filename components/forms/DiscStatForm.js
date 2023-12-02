@@ -39,52 +39,59 @@ export default function DiscStatForm({ statObj }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Aces</Form.Label>
+      <Form className="discStatForm" onSubmit={handleSubmit}>
+        <div className="discForm">
+          <Form.Group className="mb-3">
+            <Form.Label>Aces</Form.Label>
+            <Form.Control
+              className="inputField"
+              type="number"
+              placeholder="Aces"
+              name="aces"
+              value={formInput.aces}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Label>Birdies</Form.Label>
           <Form.Control
+            className="inputField"
             type="number"
-            placeholder="Aces"
-            name="aces"
-            value={formInput.aces}
+            placeholder="Birdies"
+            name="birdies"
+            value={formInput.birdies}
             onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Label>Birdies</Form.Label>
-        <Form.Control
-          type="number"
-          placeholder="Birdies"
-          name="birdies"
-          value={formInput.birdies}
-          onChange={handleChange}
-        />
-        <Form.Label>Longest Throw</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Longest Throw"
-          name="longestThrow"
-          value={formInput.longestThrow}
-          onChange={handleChange}
-        />
-        <p>ft</p>
-        <Form.Check
-          className="text-white mb-3"
-          type="switch"
-          id="favorite"
-          name="favorite"
-          label="Favorite?"
-          checked={formInput.favorite}
-          onChange={(e) => {
-            setFormInput((prevState) => ({
-              ...prevState,
-              favorite: e.target.checked,
-            }));
-          }}
-        />
-        <Button variant="primary" type="submit">
-          Done?
-        </Button>
-        <div>
+          <Form.Label>Longest Throw</Form.Label>
+          <div className="longestThrow">
+            <Form.Control
+              className="inputField"
+              type="text"
+              placeholder="Longest Throw"
+              name="longestThrow"
+              value={formInput.longestThrow}
+              onChange={handleChange}
+            />
+            <p className="ft">ft</p>
+          </div>
+          <Form.Check
+            className="text-black mb-3"
+            type="switch"
+            id="favorite"
+            name="favorite"
+            label="Favorite?"
+            checked={formInput.favorite}
+            onChange={(e) => {
+              setFormInput((prevState) => ({
+                ...prevState,
+                favorite: e.target.checked,
+              }));
+            }}
+          />
+          <Button className="bagDiscBtn" variant="outline-secondary" type="submit">
+            Done?
+          </Button>
+        </div>
+        <div className="flightPath">
           <img src={statObj.pic} alt="probable flight path" />
         </div>
       </Form>

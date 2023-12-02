@@ -31,87 +31,102 @@ export default function ExtDiscStatForm({ extDiscObj }) {
     e.preventDefault();
     createBaggedDisc(formInput).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
-      updateBaggedDisc(patchPayload).then(() => router.push('/allDiscs/discs'));
+      updateBaggedDisc(patchPayload).then(() => router.push(`/myBag/${formInput.bagId}`));
     });
   };
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
+      <Form className="addDiscForm" onSubmit={handleSubmit}>
+        <div className="unchangeableSection">
+          <Form.Group>
+            <Form.Label className="inputLabel">Name</Form.Label>
+            <Form.Control
+              className="discInfo"
+              type="text"
+              placeholder={extDiscObj.name}
+              name="name"
+              value={formInput.name}
+              onChange={handleChange}
+              disabled
+            />
+          </Form.Group>
+          <Form.Label className="inputLabel">Brand</Form.Label>
           <Form.Control
+            className="discInfo"
             type="text"
-            placeholder={extDiscObj.name}
-            name="name"
-            value={formInput.name}
+            placeholder={formInput.brand}
+            name="brand"
+            value={formInput.brand}
             onChange={handleChange}
+            disabled
           />
-        </Form.Group>
-        <Form.Label>Brand</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={formInput.brand}
-          name="brand"
-          value={formInput.brand}
-          onChange={handleChange}
-        />
-        <Form.Label>Speed</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={formInput.speed}
-          name="speed"
-          value={formInput.speed}
-          onChange={handleChange}
-        />
-        <Form.Label>Glide</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={formInput.glide}
-          name="glide"
-          value={formInput.glide}
-          onChange={handleChange}
-        />
-        <Form.Label>Turn</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={formInput.turn}
-          name="turn"
-          value={formInput.turn}
-          onChange={handleChange}
-        />
-        <Form.Label>Fade</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={formInput.fade}
-          name="fade"
-          value={formInput.fade}
-          onChange={handleChange}
-        />
-        <Form.Check
-          className="text-white mb-3"
-          type="switch"
-          id="favorite"
-          name="favorite"
-          label="Favorite?"
-          checked={formInput.favorite}
-          onChange={(e) => {
-            setFormInput((prevState) => ({
-              ...prevState,
-              favorite: e.target.checked,
-            }));
-          }}
-        />
-        <Form.Select
-          label="Bag"
-          name="bagId"
-          onChange={handleChange}
-          className="mb-3"
-          value={formInput.bagId}
-          required
-        >
-          <option>Add to which bag?</option>
-          {
+          <Form.Label className="inputLabel">Speed</Form.Label>
+          <Form.Control
+            className="discInfo"
+            type="text"
+            placeholder={formInput.speed}
+            name="speed"
+            value={formInput.speed}
+            onChange={handleChange}
+            disabled
+          />
+          <Form.Label className="inputLabel">Glide</Form.Label>
+          <Form.Control
+            className="discInfo"
+            type="text"
+            placeholder={formInput.glide}
+            name="glide"
+            value={formInput.glide}
+            onChange={handleChange}
+            disabled
+          />
+          <Form.Label className="inputLabel">Turn</Form.Label>
+          <Form.Control
+            className="discInfo"
+            type="text"
+            placeholder={formInput.turn}
+            name="turn"
+            value={formInput.turn}
+            onChange={handleChange}
+            disabled
+          />
+          <Form.Label className="inputLabel">Fade</Form.Label>
+          <Form.Control
+            className="discInfo"
+            type="text"
+            placeholder={formInput.fade}
+            name="fade"
+            value={formInput.fade}
+            onChange={handleChange}
+            disabled
+          />
+        </div>
+        <div className="selectables">
+          <Form.Check
+            className="text-white mb-3"
+            type="switch"
+            id="favorite"
+            name="favorite"
+            label="Favorite?"
+            checked={formInput.favorite}
+            onChange={(e) => {
+              setFormInput((prevState) => ({
+                ...prevState,
+                favorite: e.target.checked,
+              }));
+            }}
+          />
+          <Form.Select
+            label="Bag"
+            name="bagId"
+            onChange={handleChange}
+            className="mb-3 chooseBag"
+            value={formInput.bagId}
+            required
+          >
+            <option value="" label="Add to which bag?" />
+            {
             bags.map((bag) => (
               <option
                 key={bag.firebaseKey}
@@ -120,11 +135,12 @@ export default function ExtDiscStatForm({ extDiscObj }) {
               />
             ))
           }
-        </Form.Select>
-        <Button variant="primary" type="submit">
+          </Form.Select>
+        </div>
+        <Button className="addDiscBtn" variant="outline-secondary" type="submit">
           Done?
         </Button>
-        <div>
+        <div className="flightPath">
           <img src={formInput.pic} alt="probable flight path" />
         </div>
       </Form>

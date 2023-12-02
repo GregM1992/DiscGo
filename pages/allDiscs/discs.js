@@ -37,13 +37,14 @@ function ShowAllDiscs() {
 
   return (
     <>
+      <h2 className="allDiscHeader"> All Discs</h2>
       <Form className="search-bar">
-        <FormControl type="text" size="sm" onChange={handleSearch} value={searchInput} />
+        <FormControl placeholder="Search by name" type="text" size="sm" onChange={handleSearch} value={searchInput} />
       </Form>
       <div className="text-center my-4" id="discContainer">
 
         {discs.map((disc) => (
-          <Button className="discButton" key={disc.id} onClick={() => handleClick(disc.id)}>
+          <Button className="discButton" variant="transparent" key={disc.id} onClick={() => handleClick(disc.id)}>
             <DiscCard key={disc.id} discObj={disc} onUpdate={getAllTheDiscs} />
           </Button>
         ))}

@@ -41,10 +41,11 @@ export default function BagForm({ obj }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <h2 className="bagFormHeader">Name your bag!</h2>
+      <Form className="bagForm" onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Bag Name</Form.Label>
           <Form.Control
+            className="bagInputField"
             type="text"
             placeholder="What is this bags name?"
             name="bagName"
@@ -66,7 +67,7 @@ export default function BagForm({ obj }) {
             }));
           }}
         />
-        <Button variant="primary" type="submit">
+        <Button variant="outline-secondary" type="submit">
           Done?
         </Button>
       </Form>
