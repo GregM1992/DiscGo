@@ -17,10 +17,12 @@ export default function BagCard({ bagObj, onUpdate }) {
     }
   };
   return (
-    <Card style={{ width: '18rem' }}>
-      <Image variant="top" src={bagimg} alt="bag image" />
+    <Card className="bagCard" style={{ width: '18rem' }}>
+      <Link href={`/myBag/${bagObj.firebaseKey}`} passHref>
+        <Image className="bagImg" variant="top" src={bagimg} alt="bag image" />
+      </Link>
       <Card.Body>
-        <Card.Title>{bagObj.bagName}</Card.Title>
+        <Card.Title className="bagName">{bagObj.bagName}</Card.Title>
         <p className="card-text bold">
           {bagObj.favorite ? (
             <span>
@@ -30,10 +32,7 @@ export default function BagCard({ bagObj, onUpdate }) {
           ) : <img id="faveicon" src={emptyheart.src} alt="heart icon" /> }{' '}
           {bagObj.favorite}
         </p>
-        <Link href={`/myBag/${bagObj.firebaseKey}`} passHref>
-          <Button variant="info">VIEW</Button>
-        </Link>
-        <Button variant="primary" onClick={deleteThisBag}>
+        <Button variant="outline-secondary" onClick={deleteThisBag}>
           DELETE
         </Button>
       </Card.Body>
