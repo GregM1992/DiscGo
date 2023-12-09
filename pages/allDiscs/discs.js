@@ -10,11 +10,8 @@ function ShowAllDiscs() {
   const [nameSearchInput, setNameSearchInput] = useState('');
   const [brands, setBrands] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [filtDisc, setFiltDisc] = useState([]);
   const router = useRouter();
-
-  const getAllTheDiscs = () => {
-    getAllDiscs().then(setDiscs);
-  };
 
   const handleNameSearch = (e) => {
     setNameSearchInput(e.target.value.toLowerCase());
@@ -30,16 +27,19 @@ function ShowAllDiscs() {
     }
 
     setSelectedBrands(updatedBrands);
+  };
 
-    const filteredDiscs = discs.filter((disc) => {
-      if (updatedBrands.length === 0) {
-        getAllDiscs().then(setDiscs(filteredDiscs));
-      }
-      return updatedBrands.includes(disc.brand);
-    });
-
-    setDiscs(filteredDiscs);
-    console.warn(selectedBrands);
+  const filteredDiscs = (arr) => {
+    if (arr.length !== 0) {
+      const array = arr.filter((disc) => {
+        if (selectedBrands.length === 0) {
+          return true;
+        }
+        return selectedBrands.includes(disc.brand);
+      });
+      setFiltDisc(array);
+    }
+    return [];
   };
 
   const handleClick = (id) => {
@@ -49,10 +49,13 @@ function ShowAllDiscs() {
   useEffect(() => {
     if (nameSearchInput.trim() !== '') {
       searchDiscsByName(nameSearchInput).then((filteredDisc) => {
-        setDiscs(filteredDisc);
+        setFiltDisc(filteredDisc);
       });
     } else {
-      getAllDiscs().then(setDiscs);
+      getAllDiscs().then((response) => {
+        setDiscs(response);
+        setFiltDisc(response);
+      });
     }
     if (discs.length === 0) {
       setDiscs([]);
@@ -65,6 +68,10 @@ function ShowAllDiscs() {
       setBrands(uniqueBrands);
     });
   }, [discs]);
+
+  useEffect(() => {
+    filteredDiscs(discs);
+  }, [selectedBrands]);
 
   return (
     <>
@@ -93,9 +100,9 @@ function ShowAllDiscs() {
         </Dropdown>
       </Form>
       <div className="text-center my-4" id="discContainer">
-        {discs.map((disc) => (
+        {filtDisc.map((disc) => (
           <Button className="discButton" variant="transparent" key={disc.id} onClick={() => handleClick(disc.id)}>
-            <DiscCard key={disc.id} discObj={disc} onUpdate={getAllTheDiscs} />
+            <DiscCard key={disc.id} discObj={disc} />
           </Button>
         ))}
       </div>
