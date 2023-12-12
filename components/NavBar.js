@@ -6,7 +6,7 @@ import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
 import Image from 'next/image';
-import bagimg from '../public/bagimg.webp';
+import dgb from '../public/DiscBag.png';
 
 export default function NavBar() {
   return (
@@ -16,7 +16,7 @@ export default function NavBar() {
           <Navbar.Brand className="discGoNameLogo">
             <Image
               alt="Bag Logo"
-              src={bagimg}
+              src={dgb}
               width="65rem"
               height="65rem"
               className="bagLogo"

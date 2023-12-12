@@ -16,6 +16,7 @@ function ShowAllDiscs() {
   const handleNameSearch = (e) => {
     setNameSearchInput(e.target.value.toLowerCase());
   };
+
   const handleCheckboxChange = (e, brand) => {
     const { checked } = e.target;
 
@@ -30,21 +31,26 @@ function ShowAllDiscs() {
   };
 
   const filteredDiscs = (arr) => {
-    if (arr.length !== 0) {
-      const array = arr.filter((disc) => {
-        if (selectedBrands.length === 0) {
-          return true;
-        }
-        return selectedBrands.includes(disc.brand);
-      });
+    if (arr.length !== 0 && selectedBrands.length === 0) {
+      return arr;
+    } if (arr.length !== 0 && selectedBrands.length !== 0) {
+      const array = arr.filter((disc) => selectedBrands.includes(disc.brand));
       setFiltDisc(array);
     }
+
     return [];
   };
 
   const handleClick = (id) => {
     router.push(`/allDiscs/${id}`);
   };
+  useEffect(() => {
+    getAllDiscs()
+      .then((allDiscs) => {
+        const uniqueBrands = [...new Set(allDiscs.map((disc) => disc.brand))];
+        setBrands(uniqueBrands);
+      });
+  }, [discs, selectedBrands]);
 
   useEffect(() => {
     if (nameSearchInput.trim() !== '') {
@@ -61,13 +67,6 @@ function ShowAllDiscs() {
       setDiscs([]);
     }
   }, [nameSearchInput]);
-
-  useEffect(() => {
-    getAllDiscs().then((allDiscs) => {
-      const uniqueBrands = [...new Set(allDiscs.map((disc) => disc.brand))];
-      setBrands(uniqueBrands);
-    });
-  }, [discs]);
 
   useEffect(() => {
     filteredDiscs(discs);

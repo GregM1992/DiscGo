@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { deleteBag } from '../api/bagData';
 import heart from '../public/heart.svg';
 import emptyheart from '../public/emptyheart.svg';
-import bagimg from '../public/bagimg.webp';
+import dgb from '../public/DiscBag.png';
 
 export default function BagCard({ bagObj, onUpdate }) {
   const deleteThisBag = () => {
@@ -19,7 +19,7 @@ export default function BagCard({ bagObj, onUpdate }) {
   return (
     <Card className="bagCard" style={{ width: '18rem' }}>
       <Link href={`/myBag/${bagObj.firebaseKey}`} passHref>
-        <Image className="bagImg" variant="top" src={bagimg} alt="bag image" />
+        <Image className="bagImg" variant="top" src={dgb} alt="bag image" />
       </Link>
       <Card.Body>
         <Card.Title className="bagName">{bagObj.bagName}</Card.Title>
