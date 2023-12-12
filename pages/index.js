@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import courseImg from '../public/discgolf course Photo.jpg';
+import courseImg from '../public/DGC.png';
 
 function Home() {
   const { user } = useAuth();
