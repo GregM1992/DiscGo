@@ -67,7 +67,7 @@ export default function BagForm({ obj }) {
             }));
           }}
         />
-        <Button variant="outline-secondary" type="submit">
+        <Button className="button" variant="outline-secondary" type="submit">
           Done?
         </Button>
       </Form>
