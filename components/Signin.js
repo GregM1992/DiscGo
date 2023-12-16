@@ -5,7 +5,7 @@ import { signIn } from '../utils/auth';
 function Signin() {
   return (
     <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
+      className="signInPage text-center d-flex flex-column justify-content-center align-content-center"
       style={{
         height: '90vh',
         padding: '30px',
