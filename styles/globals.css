@@ -87,6 +87,7 @@ a {
   width: fit-content;
   margin: 0.625rem auto 0.625rem auto;
   text-shadow:0 0 2px #040404;
+  background-color: #334131
 }
 .welcomeDiv{
   color: #92b28d;
@@ -118,14 +119,17 @@ a {
 }
 .bagCard{
   background-color: #334131 !important;
-  border: none;
-  color: rgb(119, 155, 113);
+  border: none !important;
+  color: rgb(119, 155, 113) !important;
   height:500px
+
 }
 .bagPage{
   color: rgb(119, 155, 113);
   text-shadow:0 0 1px #040404;
-  background-color: #334131
+  background-color: #334131;
+  border: none;
+  
 }
 .bagDetailsPage{
   display: flex;
