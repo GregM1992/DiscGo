@@ -5,13 +5,7 @@ import { signIn } from '../utils/auth';
 function Signin() {
   return (
     <div
-      className="signInPage text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
+      className="signInPage"
     >
       <h1>Hi there!</h1>
       <p>Click the button below to login!</p>

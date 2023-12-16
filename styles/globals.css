@@ -295,4 +295,6 @@ max-width:26.25rem;
 }
 .signInPage{
   background-color: #334131 !important;
+  text-align: center;
+  padding-top: 300px;
 }
