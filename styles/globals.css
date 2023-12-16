@@ -18,10 +18,10 @@ a {
   box-sizing: border-box;
 }
 #_next{
-  background-color: #334131
+  background-color: #334131 !important;
 }
 .allContainer{
-  background-color: #334131
+  background-color: #334131 !important;
 }
 #faveicon{
   width: 1.563rem;
@@ -124,11 +124,15 @@ a {
   height:500px
 
 }
+h2{
+  background-color: #334131
+}
 .bagPage{
   color: rgb(119, 155, 113);
   text-shadow:0 0 1px #040404;
   background-color: #334131;
   border: none;
+  margin-top: none;
   
 }
 .bagDetailsPage{
