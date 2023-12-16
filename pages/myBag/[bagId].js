@@ -23,10 +23,10 @@ export default function ViewBagsDiscs() {
   return (
     <>
       <Link passHref href="/allDiscs/discs">
-        <Button className="addDiscBtn" variant="outline-secondary"> Add Disc </Button>
+        <Button className="addDiscBtn button" variant="outline-secondary"> Add Disc </Button>
       </Link>
       <div className="bagDetailsPage">
-        {baggedDiscs?.map((disc) => (
+        {baggedDiscs.map((disc) => (
           <BaggedDiscCard
             key={disc.firebaseKey}
             discObj={disc}

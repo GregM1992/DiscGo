@@ -137,7 +137,7 @@ export default function ExtDiscStatForm({ extDiscObj }) {
           }
           </Form.Select>
         </div>
-        <Button className="addDiscBtn" variant="outline-secondary" type="submit">
+        <Button className="addDiscBtn button" variant="outline-secondary" type="submit">
           Done?
         </Button>
         <div className="flightPath">

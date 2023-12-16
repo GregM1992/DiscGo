@@ -32,7 +32,7 @@ export default function BagCard({ bagObj, onUpdate }) {
           ) : <img id="faveicon" src={emptyheart.src} alt="heart icon" /> }{' '}
           {bagObj.favorite}
         </p>
-        <Button variant="outline-secondary" onClick={deleteThisBag}>
+        <Button className="button" variant="outline-secondary" onClick={deleteThisBag}>
           DELETE
         </Button>
       </Card.Body>
