@@ -79,12 +79,7 @@ body {
   width: fit-content;
   margin: 10px auto 10px auto;
 }
-.welcomeDiv{
-  display: flex;
-  p{
-    width: 20px;
-  }
-}
+
 .welcomeImg{
   height: 12.5rem;
   width: 37.5rem;
