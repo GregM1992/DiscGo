@@ -20,7 +20,7 @@ function ShowBags() {
   }, []);
 
   return (
-    <div className="text-center my-4 bagPage">
+    <div className="text-center bagPage">
       <h2>{user.displayName}'s Bags</h2>
       <Link href="/myBag/new" passHref>
         <Button variant="outline-secondary" className="addBagBtn">Add Bag</Button>
