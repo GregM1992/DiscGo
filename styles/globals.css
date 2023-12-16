@@ -115,7 +115,7 @@ a {
   color: #92b28d;
 }
 .button{
-  color: #92b28d;
+  color: #92b28d !important;
 }
 .bagCard{
   background-color: #334131 !important;
