@@ -17,6 +17,9 @@ a {
 * {
   box-sizing: border-box;
 }
+.allContainer{
+  background-color: #334131
+}
 #faveicon{
   width: 1.563rem;
 }
@@ -35,6 +38,7 @@ a {
   justify-content: space-around;
   margin: 0 10rem 0 10rem ;
   width: auto;
+  background-color: #334131
 }
 .discDiv{
   background-color: rgb(1, 119, 222);
@@ -118,6 +122,7 @@ a {
 .bagPage{
   color: rgb(119, 155, 113);
   text-shadow:0 0 1px #040404;
+  background-color: #334131
 }
 .bagDetailsPage{
   display: flex;
