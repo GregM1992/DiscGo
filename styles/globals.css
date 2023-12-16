@@ -85,7 +85,7 @@ a {
 .allDiscHeader{
   color: #92b28d;
   width: fit-content;
-  margin: 0.625rem auto 0.625rem auto;
+  margin: 0 auto 0.625rem auto;
   text-shadow:0 0 2px #040404;
   background-color: #334131
 }
