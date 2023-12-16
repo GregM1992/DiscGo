@@ -17,6 +17,9 @@ a {
 * {
   box-sizing: border-box;
 }
+#_next{
+  background-color: #334131
+}
 .allContainer{
   background-color: #334131
 }
@@ -114,7 +117,7 @@ a {
   color: #92b28d;
 }
 .bagCard{
-  background-color: #334131;
+  background-color: #334131 !important;
   border: none;
   color: rgb(119, 155, 113);
   height:500px
