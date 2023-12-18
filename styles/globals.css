@@ -136,22 +136,22 @@ h2{
   
 }
 .bagDetailsPage{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 75rem;
-  margin: auto;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  width: 75rem !important;
+  margin: auto !important;
 }
 .baggedDiscCard {
-display: flex;
-justify-content: center;
-flex-direction: row;
-background-color: #687965;
-border: none;
-margin: 1.25rem;
-min-width:26.25rem;
-max-width:26.25rem;
+display: flex !important;
+justify-content: center !important;
+flex-direction: row !important;
+background-color: #687965 !important;
+border: none !important;
+margin: 1.25rem !important;
+min-width:26.25rem !important;
+max-width:26.25rem !important;
 }
 .baggedDiscCardBody{
   display: flex;
