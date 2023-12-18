@@ -226,27 +226,27 @@ max-width:26.25rem;
   margin-top: 0.313rem;
 }
 .discInfo:disabled{
-  background-color: #4c6249;
-  width: 12.5rem;
-  margin: 0;
-  border: none;
-  text-align: center;
+  background-color: #4c6249 !important;
+  width: 12.5rem !important;
+  margin: 0 !important;
+  border: none !important;
+  text-align: center !important;
 }
 .unchangeableSection{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 31.25rem;
-  height:12.5rem;
-  margin: 2.813rem auto 0 auto; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+  flex-wrap: wrap !important;
+  width: 31.25rem !important;
+  height:12.5rem !important;
+  margin: 2.813rem auto 0 auto !important; 
 }
 .chooseBag{
   width: 14.375rem;
 }
 .addDiscForm{
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 }
 .inputLabel{
   display: flex;
@@ -284,7 +284,6 @@ max-width:26.25rem;
   color: #92b28d;
   margin: auto;
   width:16.875rem ;
-  margin-top: 1.25rem;
 }
 .bagInputField{
   background-color: #485846;
