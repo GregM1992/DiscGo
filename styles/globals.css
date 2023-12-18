@@ -249,14 +249,14 @@ max-width:26.25rem;
   flex-direction: column !important;
 }
 .inputLabel{
-  display: flex;
-  justify-content: space-evenly;
-  width: 12.5rem;
-  padding: 0;
-  margin: 0; 
-  font-weight: bolder;
-  color: #92b28d;
-  text-shadow:0 0 1px #040404;
+  display: flex !important;
+  justify-content: space-evenly !important;
+  width: 12.5rem !important;
+  padding: 0 !important;
+  margin: 0 !important; 
+  font-weight: bolder !important;
+  color: #92b28d !important;
+  text-shadow:0 0 1px #040404 !important;
 }
 .selectables{
   display: flex;
