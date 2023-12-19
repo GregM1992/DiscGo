@@ -117,7 +117,7 @@ a {
 .noBagsDiv{
   display: flex !important;
   flex-direction: column !important;
-  margin: 0.938rem auto 1.563rem auto !important;
+  margin: 0 auto 1.563rem auto !important;
   color: #92b28d !important;
   justify-content: center !important;
   align-items: center !important;
