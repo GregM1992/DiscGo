@@ -19,7 +19,15 @@ function ShowBags() {
     getAllBags();
   }, []);
 
-  return (
+  if (bags.length < 1) {
+    return (
+      <div className="noBagsDiv"><p className="text-center"> There are no bags yet.</p>
+        <Link href="/myBag/new" passHref>
+          <Button variant="outline-secondary" className="button addBagIfNone">Add Bag</Button>
+        </Link>
+      </div>
+    );
+  } return (
     <div className="text-center bagPage">
       <h2>{user.displayName}'s Bags</h2>
       <Link href="/myBag/new" passHref>
