@@ -213,7 +213,7 @@ max-width:26.25rem !important;
 }
 .bagDiscBtn{
   width: fit-content;
-  color: #040404;
+  color: #040404 !important;
   border-color: #040404;
 }
 .discForm{
