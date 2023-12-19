@@ -20,7 +20,15 @@ export default function ViewBagsDiscs() {
     getBagsDiscs();
   }, [bagId]);
 
-  return (
+  if (baggedDiscs.length < 1) {
+    return (
+      <div className="noBagsDiv"><p className="text-center"> There are no discs yet.</p>
+        <Link passHref href="/allDiscs/discs">
+          <Button className="button" variant="outline-secondary"> Add Disc </Button>
+        </Link>
+      </div>
+    );
+  } return (
     <>
       <Link passHref href="/allDiscs/discs">
         <Button className="addDiscBtn button" variant="outline-secondary"> Add Disc </Button>
