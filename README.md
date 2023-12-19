@@ -16,16 +16,16 @@ It allows for quick referencing and search of a wide range of specific discs.
 - create and populate an .env file
 - npm run dev
 
-##### Tech Used
+#### Tech Used
 - NextJS
 - Node.JS
 - React
 - Bootstrap
 - https://github.com/cdleveille/discit-api
 
-###### Demo
+#### Demo
 https://www.loom.com/share/a76dc81b2ad1462cb50cb8693fd5fab9
 
-####### Deployed Site 
+#### Deployed Site 
 https://discgo.netlify.app/
  
