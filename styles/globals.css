@@ -187,7 +187,7 @@ max-width:26.25rem !important;
   display: flex !important;
   justify-content: center !important;
   width: max-content !important;
-  margin: 1.563rem auto 0.313rem auto !important; 
+  margin: 0 auto 0.313rem auto !important; 
 }
 
 .discStatForm{
