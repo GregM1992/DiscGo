@@ -1,12 +1,13 @@
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
 
 import React, {
-  createContext,
+  createContext, //
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
+import { checkUser } from '../auth';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -15,30 +16,51 @@ AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName
 
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
+  const [oAuthUser, setOAuthUser] = useState(null);
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
+  const updateUser = useMemo(
+    () => (uid) => checkUser(uid).then((userBio) => {
+      setUser({ fbUser: oAuthUser, ...userBio });
+    }),
+    [oAuthUser],
+  );
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
-        setUser(fbUser);
+        setOAuthUser(fbUser);
+        checkUser(fbUser.uid).then((userBio) => {
+          let userObj = {};
+          if (userBio && typeof userBio === 'object' && 'null' in userBio) {
+            userObj = { ...userBio, uid: fbUser.uid };
+          } else {
+            userObj = { ...userBio, uid: fbUser.uid };
+          }
+          setUser(userObj);
+        });
       } else {
+        setOAuthUser(false);
         setUser(false);
       }
-    }); // creates a single global listener for auth state changed
+    });
   }, []);
 
-  const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
+  const value = useMemo(
+    // https://reactjs.org/docs/hooks-reference.html#usememo
     () => ({
       user,
-      userLoading: user === null,
+      updateUser,
+      userLoading: user === null || oAuthUser === null,
+      userEmail: oAuthUser?.email,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
-    [user],
+    [user, oAuthUser, updateUser],
   );
 
   return <AuthContext.Provider value={value} {...props} />;

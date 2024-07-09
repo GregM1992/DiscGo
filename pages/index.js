@@ -3,9 +3,15 @@ import Image from 'next/image';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import courseImg from '../public/DGC.png';
+import RegisterForm from '../components/forms/RegisterForm';
 
 function Home() {
   const { user } = useAuth();
+  const isUser = user?.id;
+
+  if (!isUser) {
+    return <RegisterForm />;
+  }
 
   return (
     <div
