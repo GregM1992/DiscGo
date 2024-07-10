@@ -8,7 +8,7 @@ import { useAuth } from '../../utils/context/authContext';
 function RegisterForm() {
   const user = useAuth();
   const [formData, setFormData] = useState({
-    uid: user.user.uid,
+    userId: user.user.uid,
     userName: '',
     email: user.userEmail,
   });
@@ -17,6 +17,7 @@ function RegisterForm() {
     e.preventDefault();
     registerUser(formData).then(checkUser(user.user.uid)).then(() => {
       window.location.reload();
+      console.warn(formData);
     });
   };
 
