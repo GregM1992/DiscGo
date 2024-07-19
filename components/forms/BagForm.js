@@ -30,13 +30,16 @@ export default function BagForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, userId: user.uid };
-    createNewBag(payload).then((response) => {
-      const patchPayload = { ...formInput, id: response.id };
-      updateBagByBagId(patchPayload).then(() => {
+    if (obj.id) {
+      updateBagByBagId(obj.id, formInput).then(() => {
         router.push('/myBag/bags');
       });
-    });
+    } else {
+      const payload = { ...formInput, userId: user.uid };
+      createNewBag(payload).then(() => {
+        router.push('/myBag/bags');
+      });
+    }
   };
 
   return (

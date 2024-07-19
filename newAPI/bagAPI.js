@@ -43,7 +43,6 @@ const deleteBagByBagId = (bagId) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import Image from 'next/image';
-import { deleteBag } from '../api/bagData';
+import { deleteBagByBagId } from '../newAPI/bagAPI';
 import heart from '../public/heart.svg';
 import emptyheart from '../public/emptyheart.svg';
 import dgb from '../public/DiscBag.png';
@@ -13,12 +13,12 @@ import dgb from '../public/DiscBag.png';
 export default function BagCard({ bagObj, onUpdate }) {
   const deleteThisBag = () => {
     if (window.confirm(`Delete ${bagObj.bagName}?`)) {
-      deleteBag(bagObj.firebaseKey).then(() => onUpdate());
+      deleteBagByBagId(bagObj.id).then(() => onUpdate());
     }
   };
   return (
     <Card className="bagCard" style={{ width: '18rem' }}>
-      <Link href={`/myBag/${bagObj.firebaseKey}`} passHref>
+      <Link href={`/myBag/${bagObj.id}`} passHref>
         <Image className="bagImg" variant="top" src={dgb} alt="bag image" />
       </Link>
       <Card.Body>
@@ -43,8 +43,8 @@ export default function BagCard({ bagObj, onUpdate }) {
 BagCard.propTypes = {
   bagObj: PropTypes.shape({
     bagName: PropTypes.string,
-    firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
+    id: PropTypes.number,
+    userId: PropTypes.string,
     favorite: PropTypes.bool,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
