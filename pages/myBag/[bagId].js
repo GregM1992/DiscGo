@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import BaggedDiscCard from '../../components/BaggedDiscCard';
-import { getAllBaggedDiscsByBag } from '../../api/discData';
+import { getBaggedDiscsByBagId } from '../../newAPI/baggedDiscAPI';
 
 export default function ViewBagsDiscs() {
   const [baggedDiscs, setBaggedDiscs] = useState([]);
@@ -13,7 +13,7 @@ export default function ViewBagsDiscs() {
   const { bagId } = router.query;
 
   const getBagsDiscs = () => {
-    getAllBaggedDiscsByBag(bagId)?.then(setBaggedDiscs);
+    getBaggedDiscsByBagId(bagId)?.then(setBaggedDiscs);
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function ViewBagsDiscs() {
       <div className="bagDetailsPage">
         {baggedDiscs.map((disc) => (
           <BaggedDiscCard
-            key={disc.firebaseKey}
+            key={disc.id}
             discObj={disc}
             onUpdate={getBagsDiscs}
           />

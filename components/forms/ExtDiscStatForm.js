@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createBaggedDisc, updateBaggedDisc } from '../../api/discData';
-import { getBags } from '../../api/bagData';
+import { addBaggedDisc, updateBaggedDisc } from '../../newAPI/baggedDiscAPI';
+import { getUsersBags } from '../../newAPI/bagAPI';
 
 export default function ExtDiscStatForm({ extDiscObj }) {
   const [formInput, setFormInput] = useState({});
@@ -16,7 +16,7 @@ export default function ExtDiscStatForm({ extDiscObj }) {
 
   useEffect(() => {
     if (extDiscObj.id)setFormInput(extDiscObj);
-    getBags(user.uid).then(setBags);
+    getUsersBags(user.uid).then(setBags);
   }, []);
 
   const handleChange = (e) => {
@@ -24,15 +24,22 @@ export default function ExtDiscStatForm({ extDiscObj }) {
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
+      discId: extDiscObj.id,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBaggedDisc(formInput).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateBaggedDisc(patchPayload).then(() => router.push(`/myBag/${formInput.bagId}`));
-    });
+    if (extDiscObj.id) {
+      updateBaggedDisc(extDiscObj.id, formInput).then(() => {
+        router.push(`/myBag/${formInput.bagId}`);
+      });
+    } else {
+      const payload = { ...formInput };
+      addBaggedDisc(payload).then(() => {
+        router.push(`/myBag/${formInput.bagId}`);
+      });
+    }
   };
 
   return (
@@ -129,8 +136,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
             {
             bags.map((bag) => (
               <option
-                key={bag.firebaseKey}
-                value={bag.firebaseKey}
+                key={bag.id}
+                value={bag.id}
                 label={bag.bagName}
               />
             ))
