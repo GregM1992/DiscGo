@@ -23,7 +23,7 @@ export default function ViewBagsDiscs() {
     <div>
 
       <ExtDiscStatForm
-        key={discDetails.id}
+        key={discDetails.discId}
         extDiscObj={discDetails}
       />
 

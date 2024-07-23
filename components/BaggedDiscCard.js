@@ -13,14 +13,14 @@ import trash from '../public/trashcan.svg';
 export default function BaggedDiscCard({ discObj, onUpdate }) {
   const deleteThisDiscFromBag = () => {
     if (window.confirm('Remove this Disc?')) {
-      deleteBaggedDisc(discObj.firebaseKey).then(() => onUpdate());
+      deleteBaggedDisc(discObj.id).then(() => onUpdate());
     }
   };
   return (
     <div>
       <Card className="baggedDiscCard">
         <Card.Body className="baggedDiscCardBody">
-          <Link href={`/singleDisc/${discObj.firebaseKey}`}>
+          <Link href={`/singleDisc/${discObj.id}`}>
             <div className="discDiv" style={{ backgroundColor: `${discObj.background_color}`, color: `${discObj.color}` }}>
               {discObj.name}
             </div>
@@ -50,10 +50,10 @@ export default function BaggedDiscCard({ discObj, onUpdate }) {
 
 BaggedDiscCard.propTypes = {
   discObj: PropTypes.shape({
-    firebaseKey: PropTypes.string,
+    discId: PropTypes.string,
     favorite: PropTypes.bool,
-    id: PropTypes.string,
-    bagId: PropTypes.string,
+    id: PropTypes.number,
+    bagId: PropTypes.number,
     name: PropTypes.string,
     brand: PropTypes.string,
     speed: PropTypes.string,

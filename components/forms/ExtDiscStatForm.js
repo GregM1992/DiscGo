@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { addBaggedDisc, updateBaggedDisc } from '../../newAPI/baggedDiscAPI';
+import { addBaggedDisc } from '../../newAPI/baggedDiscAPI';
 import { getUsersBags } from '../../newAPI/bagAPI';
 
 export default function ExtDiscStatForm({ extDiscObj }) {
@@ -15,7 +15,7 @@ export default function ExtDiscStatForm({ extDiscObj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (extDiscObj.id)setFormInput(extDiscObj);
+    if (extDiscObj.discId)setFormInput(extDiscObj);
     getUsersBags(user.uid).then(setBags);
   }, []);
 
@@ -24,22 +24,15 @@ export default function ExtDiscStatForm({ extDiscObj }) {
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
-      discId: extDiscObj.id,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (extDiscObj.id) {
-      updateBaggedDisc(extDiscObj.id, formInput).then(() => {
-        router.push(`/myBag/${formInput.bagId}`);
-      });
-    } else {
-      const payload = { ...formInput };
-      addBaggedDisc(payload).then(() => {
-        router.push(`/myBag/${formInput.bagId}`);
-      });
-    }
+    const payload = { ...formInput };
+    addBaggedDisc(payload).then(() => {
+      router.push(`/myBag/${formInput.bagId}`);
+    });
   };
 
   return (
@@ -157,7 +150,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
 
 ExtDiscStatForm.propTypes = {
   extDiscObj: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
+    discId: PropTypes.string,
     brand: PropTypes.string,
     name: PropTypes.string,
     speed: PropTypes.string,
