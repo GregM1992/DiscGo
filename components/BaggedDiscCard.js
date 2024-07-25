@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import Image from 'next/image';
-import { deleteBaggedDisc } from '../api/discData';
+import { deleteThisBaggedDisc } from '../newAPI/baggedDiscAPI';
 import emptyheart from '../public/emptyheart.svg';
 import heart from '../public/heart.svg';
 import trash from '../public/trashcan.svg';
@@ -13,7 +13,7 @@ import trash from '../public/trashcan.svg';
 export default function BaggedDiscCard({ discObj, onUpdate }) {
   const deleteThisDiscFromBag = () => {
     if (window.confirm('Remove this Disc?')) {
-      deleteBaggedDisc(discObj.id).then(() => onUpdate());
+      deleteThisBaggedDisc(discObj.id).then(() => onUpdate());
     }
   };
   return (

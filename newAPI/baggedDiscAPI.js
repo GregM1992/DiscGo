@@ -19,7 +19,7 @@ const getBaggedDiscsByBagId = (bagId) => new Promise((resolve, reject) => {
 });
 
 const getSingleBaggedDiscInfo = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/baggedDiscs/${id}`, {
+  fetch(`${endpoint}/baggedDiscs/discInfo/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const updateBaggedDisc = (id, payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteBaggedDisc = (id) => new Promise((resolve, reject) => {
+const deleteThisBaggedDisc = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/baggedDiscs/${id}`, {
     method: 'DELETE',
     headers: {
@@ -72,5 +72,5 @@ export {
   getSingleBaggedDiscInfo,
   addBaggedDisc,
   updateBaggedDisc,
-  deleteBaggedDisc,
+  deleteThisBaggedDisc,
 };
