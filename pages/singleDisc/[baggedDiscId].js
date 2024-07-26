@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import DiscStatForm from '../../components/forms/DiscStatForm';
-import getSingleBaggedDiscInfo from '../../newAPI/baggedDiscAPI';
+import { getSingleBaggedDiscInfo } from '../../newAPI/baggedDiscAPI';
 
 export default function ViewBaggedDiscsStats() {
   const [baggedDiscsStats, setBaggedDiscsStats] = useState({});
@@ -11,7 +11,7 @@ export default function ViewBaggedDiscsStats() {
   const { baggedDiscId } = router.query;
 
   const getBagsDiscStats = () => {
-    getSingleBaggedDiscInfo(baggedDiscId).then(setBaggedDiscsStats);
+    getSingleBaggedDiscInfo(baggedDiscId).then((data) => setBaggedDiscsStats(data));
   };
 
   useEffect(() => {

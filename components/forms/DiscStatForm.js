@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { updateBaggedDisc } from '../../api/discData';
+import { updateBaggedDisc } from '../../newAPI/baggedDiscAPI';
 
 const initialState = {
   aces: 0,
@@ -18,7 +18,7 @@ export default function DiscStatForm({ statObj }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (statObj.firebaseKey) setFormInput(statObj);
+    if (statObj.id) setFormInput(statObj);
   }, [statObj]);
 
   const handleChange = (e) => {
@@ -103,9 +103,9 @@ DiscStatForm.propTypes = {
   statObj: PropTypes.shape({
     aces: PropTypes.number,
     birdies: PropTypes.number,
-    longestThrow: PropTypes.string,
+    longestThrow: PropTypes.number,
     bagId: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    id: PropTypes.number,
     pic: PropTypes.string,
     favorite: PropTypes.bool,
   }),
