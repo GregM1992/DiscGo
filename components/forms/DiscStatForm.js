@@ -10,7 +10,7 @@ const initialState = {
   aces: 0,
   favorite: false,
   birdies: 0,
-  longestThrow: '',
+  longestThrow: 0,
 };
 
 export default function DiscStatForm({ statObj }) {
@@ -32,7 +32,7 @@ export default function DiscStatForm({ statObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateBaggedDisc(formInput).then(() => {
+    updateBaggedDisc(statObj.id, formInput).then(() => {
       router.push(`/myBag/${statObj.bagId}`);
     });
   };
@@ -104,7 +104,7 @@ DiscStatForm.propTypes = {
     aces: PropTypes.number,
     birdies: PropTypes.number,
     longestThrow: PropTypes.number,
-    bagId: PropTypes.string,
+    bagId: PropTypes.number,
     id: PropTypes.number,
     pic: PropTypes.string,
     favorite: PropTypes.bool,
