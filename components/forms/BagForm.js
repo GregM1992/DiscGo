@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createBag, updateBag } from '../../api/bagData';
+import { createNewBag, updateBagByBagId } from '../../newAPI/bagAPI';
 
 const initialState = {
   bagName: '',
@@ -17,7 +17,7 @@ export default function BagForm({ obj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj.id) setFormInput(obj);
   }, [obj, user]);
 
   const handleChange = (e) => {
@@ -30,13 +30,16 @@ export default function BagForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, uid: user.uid };
-    createBag(payload).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateBag(patchPayload).then(() => {
+    if (obj.id) {
+      updateBagByBagId(obj.id, formInput).then(() => {
         router.push('/myBag/bags');
       });
-    });
+    } else {
+      const payload = { ...formInput, userId: user.uid };
+      createNewBag(payload).then(() => {
+        router.push('/myBag/bags');
+      });
+    }
   };
 
   return (
@@ -79,7 +82,7 @@ BagForm.propTypes = {
   obj: PropTypes.shape({
     bagName: PropTypes.string,
     favorite: PropTypes.bool,
-    firebaseKey: PropTypes.string,
+    id: PropTypes.number,
   }),
 };
 

@@ -1,28 +1,29 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import DiscStatForm from '../../components/forms/DiscStatForm';
-import { getSingleBaggedDisc } from '../../api/discData';
+import { getSingleBaggedDiscInfo } from '../../newAPI/baggedDiscAPI';
 
 export default function ViewBaggedDiscsStats() {
   const [baggedDiscsStats, setBaggedDiscsStats] = useState({});
 
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { baggedDiscId } = router.query;
 
   const getBagsDiscStats = () => {
-    getSingleBaggedDisc(firebaseKey).then(setBaggedDiscsStats);
+    getSingleBaggedDiscInfo(baggedDiscId).then((data) => setBaggedDiscsStats(data));
   };
 
   useEffect(() => {
     getBagsDiscStats();
-  }, [firebaseKey]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baggedDiscId]);
 
   return (
 
     <div>
       <DiscStatForm
-        key={baggedDiscsStats.firebaseKey}
+        key={baggedDiscsStats.id}
         statObj={baggedDiscsStats}
         onUpdate={getBagsDiscStats}
       />

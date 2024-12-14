@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createBaggedDisc, updateBaggedDisc } from '../../api/discData';
-import { getBags } from '../../api/bagData';
+import { addBaggedDisc } from '../../newAPI/baggedDiscAPI';
+import { getUsersBags } from '../../newAPI/bagAPI';
 
 export default function ExtDiscStatForm({ extDiscObj }) {
   const [formInput, setFormInput] = useState({});
@@ -15,8 +15,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (extDiscObj.id)setFormInput(extDiscObj);
-    getBags(user.uid).then(setBags);
+    if (extDiscObj.discId)setFormInput(extDiscObj);
+    getUsersBags(user.uid).then(setBags);
   }, []);
 
   const handleChange = (e) => {
@@ -29,9 +29,9 @@ export default function ExtDiscStatForm({ extDiscObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBaggedDisc(formInput).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateBaggedDisc(patchPayload).then(() => router.push(`/myBag/${formInput.bagId}`));
+    const payload = { ...formInput };
+    addBaggedDisc(payload).then(() => {
+      router.push(`/myBag/${formInput.bagId}`);
     });
   };
 
@@ -129,8 +129,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
             {
             bags.map((bag) => (
               <option
-                key={bag.firebaseKey}
-                value={bag.firebaseKey}
+                key={bag.id}
+                value={bag.id}
                 label={bag.bagName}
               />
             ))
@@ -150,7 +150,8 @@ export default function ExtDiscStatForm({ extDiscObj }) {
 
 ExtDiscStatForm.propTypes = {
   extDiscObj: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
+    discId: PropTypes.string,
     brand: PropTypes.string,
     name: PropTypes.string,
     speed: PropTypes.string,

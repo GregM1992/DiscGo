@@ -1,11 +1,24 @@
 import { Button } from 'react-bootstrap';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import courseImg from '../public/DGC.png';
+import RegisterForm from '../components/forms/RegisterForm';
+import { getSingleUser } from '../newAPI/userAPI';
 
 function Home() {
+  const [appUser, setAppUser] = useState({});
   const { user } = useAuth();
+  const isUser = user?.id;
+
+  useEffect(() => {
+    getSingleUser(user.id).then((data) => setAppUser(data));
+  }, [appUser.id]);
+
+  if (!isUser) {
+    return <RegisterForm />;
+  }
 
   return (
     <div
@@ -17,7 +30,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h2>Hey {user.displayName}!</h2>
+      <h2>Hey {appUser.userName}!</h2>
       <h1> Welcome to DiscGo!</h1>
       <Image src={courseImg} className="welcomeImg" />
       <h2> A disc golf bag organizer!</h2>
